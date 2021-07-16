@@ -1,21 +1,29 @@
 #!/bin/bash
 
+#Setup command line arguments
 cmd=$1
 db_username=$2
 db_password=$3
 
+#Setup function to check if the container exists
+function jarvis_container_exists {
+  docker container ls -a -f name=jrvs-psql | wc -l
+}
+
 #Start docker if it is not already running
-systemctl status docker || systemctl start docker
+sudo systemctl status docker || systemctl start docker
+
+#Variable for if the container already exists
+exists=$(jarvis_container_exists)
 
 #Check command
 case $cmd in
 
-  #Create a container
+  #Create a container from PostgreSQL image
   create)
-    word_count=$(docker container ls -a -f name=jrvs-psql | wc -l)
 
     #If word_count equals 2, then the container has already been created
-    if [ "$word_count" -eq "2" ]; then
+    if [ "$exists" -eq "2" ]; then
       echo "The container has already been created"
       exit 1
     fi
@@ -43,16 +51,32 @@ case $cmd in
 
     ;;
 
-  #Start the container
+  #Start the container only if it has been created.
   start)
-    docker container start jrvs-psql
-    exit $?
+
+    if [ "$exists" -eq "2" ];
+    then
+      docker container start jrvs-psql
+      exit $?
+    else
+      echo "The container cannot be started before it is created."
+      exit 1
+    fi
+
     ;;
 
-  #Stop the container
+  #Stop the container only if it has been created.
   stop)
-    docker container stop jrvs-psql
-    exit $?
+
+    if [ "$exists" -eq "2" ];
+    then
+      docker container stop jrvs-psql
+      exit $?
+    else
+      echo "The container cannot be stopped before it is created."
+      exit 1
+    fi
+
     ;;
 
   #Invalid argument given or not provided
@@ -62,5 +86,3 @@ case $cmd in
     ;;
 
 esac
-
-exit 0
