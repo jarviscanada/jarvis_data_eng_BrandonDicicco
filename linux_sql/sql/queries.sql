@@ -37,3 +37,19 @@ GROUP BY
 ORDER BY
     usage.host_id,
     ts;
+
+--Query #3: Detect host failure. Occurs when less than 3 data points within 5 minutes
+SELECT
+    host_id,
+    round5(timestamp) AS "ts",
+    COUNT(*) AS "num_data_points"
+FROM
+    host_usage
+GROUP BY
+    host_id,
+    ts
+HAVING
+        COUNT(*) < 3
+ORDER BY
+    host_id,
+    ts;
