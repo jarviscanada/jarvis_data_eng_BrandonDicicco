@@ -1,7 +1,5 @@
 -- noinspection SqlNoDataSourceInspectionForFile
 
--- noinspection SqlDialectInspectionForFile
-
 --Create table to store hardware specifications
 CREATE TABLE IF NOT EXISTS PUBLIC.host_info (
     id SERIAL PRIMARY KEY,
