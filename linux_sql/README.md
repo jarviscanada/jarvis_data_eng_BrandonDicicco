@@ -6,27 +6,27 @@ collect the hardware data continuously using the `crontab` command. All the data
 database system to be portable and fit to any Linux machine. Git was used for version control purposes throughout develop, along with this GitHub repository for storage.
 
 # Quick Start
-Start a PSQL instance using psql_docker.sh:
+Start a PSQL instance using **psql_docker.sh**:
 
-`bash ./scripts/psql_docker.sh [create | start | stop ] [db_username] [db_password]`
+`bash ./scripts/psql_docker.sh create | start | stop  [db_username] [db_password]`
 
-Create the PSQL database tables using ddl.sql:
+Create the PSQL database tables using **ddl.sql**:
 
 `psql -h psql_host -U psql_user -d database_name -f sql/ddl.sql`
 
-Insert the host hardware specifications into the database using host_info.sh:
+Insert the host hardware specifications into the database using **host_info.sh**:
 
 `bash ./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password`:
 
-Insert the host hardware usage information into the database using host_usage.sh:
+Insert the host hardware usage information into the database using **host_usage.sh**:
 
 `bash ./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password`
 
-Setup Crontab to run the usage gathering script every minute:
+Setup **crontab** to run the usage gathering script every minute:
 
 ```
 crontab -e
-* * * * * bash /path/to/linux_sql/scripts/host_usage.sh 
+* * * * * bash /full/path/to/linux_sql/scripts/host_usage.sh 
 psql_host port db_name psql_user psql_password &> /tmp/host_usage.log
 ```
 
@@ -44,9 +44,31 @@ Shell script description and usage (use markdown code block for script usage)
 - queries.sql (describe what business problem you are trying to resolve)
 
 ## Database Modeling
-Describe the schema of each table using markdown table syntax (do not put any sql code)
-- `host_info`
-- `host_usage`
+Schema for 'host_info'
+
+Attribute | Type | Description
+--------- | -----| -----------
+id | serial | Unique automatically incremented number to identify each host. Primary key.
+hostname | varchar |  Unique name for every host.
+cpu_number | smallint | The number of CPU cores.
+cpu_architecture | varchar | The type of architecture of the processor.
+cpu_model | varchar | Name of CPU model.
+cpu_mhz | decimal | CPU clock speed in MHz.
+2_cache | integer | L2 memory cache size in kB.
+total_mem | integer | Size of total memory (RAM) in kB
+timestamp | timestamp | The time when this record was collected.
+
+Schema for 'host_usage'
+
+Attribute | Type | Description
+--------- | -----| -----------
+timestamp | timestamp | The time when this record was collected.
+host_id | integer | ID corresponding to the same host in the 'host_info' table. Foreign key.
+memory_free | integer | The amount of available memory (RAM).
+cpu_idle | smallint | Percentage of time that the CPU spends idle.
+cpu_kernal | smallint | Percentage of time that the CPU spends running in kernal mode.
+disk_io | integer | The number of disk input/out processes.
+disk_available | integer | Root directory disk space available in MB.
 
 # Test
 How did you test your bash scripts and SQL queries? What was the result?
