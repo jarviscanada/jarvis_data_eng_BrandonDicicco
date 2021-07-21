@@ -70,15 +70,30 @@ cpu_kernal | smallint | Percentage of time that the CPU spends running in kernal
 disk_io | integer | The number of disk input/out processes.
 disk_available | integer | Root directory disk space available in MB.
 
-# Test
-How did you test your bash scripts and SQL queries? What was the result?
+# Testing
+Due to being an MVP, I only tested a single machine instance. The assumption of the scripts working in a Linux
+cluster that is connected properly was made. 
 
+### Bash Scripts Testing
+- The scripts (`psql_docker.sh`, `host_info.sh`, and `host_usage.sh`) were manually tested on a single machine. These tests used 
+the Linux shell.
+- Bash options such as `bash -x` were used. This one allowed the execution of the script to be seen and was useful for debugging.
+- The scripts that collected data (`host_info.sh` and `host_usage.sh`) were verified by checking the 
+database tables after execution.
+- `psql_docker.sh` was tested using Docker CLI. After creating the PSQL container, it was verified to exist and run by accessing it.
+### SQL Testing
+- `ddl.sql` was verified by viewing the database tables using the database view of IntelliJ. The PostgreSQL terminal
+was also used to list the tables the database contained.
+- `queries.sql` was tested by inserting test data into the databases and verifying the queries results manually by calculating
+the expected results, and the ones that were returned.
 # Deployment
-How did you deploy your app? (e.g. Github for SCM and docker for PSQL)
+Due to the project scope and nature, deployment isn't necessary. Git and GitHub manages the source-control management, 
+and Docker containers manage the PSQL instance. 
 
 # Improvements
-Write at least three things you want to improve
-e.g.
-- handle hardware update
-- blah
-- blah
+As an MVP, many improvements can be made. Some of these include:
+
+- Implement a single bash script that automates the entire process. The script would 
+  retrieve and create the Docker PSQL container, start it, and construct the tables using the DDL schemas. 
+- Create an alert to notify the users immediately when the SQL queries detect system failure.  
+- Create a backup storage mechanism. At the moment, a single machine contains the database.  
