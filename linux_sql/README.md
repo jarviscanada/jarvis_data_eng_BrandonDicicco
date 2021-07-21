@@ -1,10 +1,5 @@
 # Introduction
-The purpose of this project was to develop a minimum viable product (MVP) that would automatically collect and store hardware specifications and usage data. 
-The data comes from a cluster of internally connected Linux machines. The potential users include the Jarvis Linux Cluster Administration (LCA) team,
-along with anyone that would need to collect this data, such as network administrators. The core of the project is the set of bash scripts that
-collect the hardware data continuously using the `crontab` command. All the data is stored in a PostgreSQL Docker container. This allows the 
-database system to be portable and fit to any Linux machine. Git was used for version control purposes throughout develop, along with this GitHub repository for storage.
-
+The goal of this project was to develop a minimum viable product (MVP) that would automatically collect and store hardware information. The data comes from a cluster of internally connected Linux machines. The potential users include the Jarvis Linux Cluster Administration (LCA) team, along with anyone that would need to collect this data, such as network administrators. The project's core is the set of bash scripts that collect the hardware data continuously using the crontab command. A PostgreSQL Docker container stores all of the data; This allows the database system to be portable and fit any Linux machine. The version control system uses Git to manage the development, along with this GitHub repository for storage.
 # Quick Start
 Start a PSQL instance using **psql_docker.sh**:
 
@@ -31,11 +26,7 @@ psql_host port db_name psql_user psql_password &> /tmp/host_usage.log
 ```
 
 # Implementation
-The basis of this project are the bash scripts. These scripts are located on host machines, and are run
-in order to collect data from that machine. The details of the scripts can be found in the "Scripts" section.
-To help with the collection of this data, a Docker PostgreSQL container is created on one machine. All
-the data is fed into that container and stored into the PSQL database. The usefulness of this data, and what
-exactly it entails is detailed further on.
+The basis of this project is the bash scripts. These scripts run on the host machines to collect hardware data and are detailed in the "Scripts" section. To help with the collection of this data, a Docker PostgreSQL container is created on one machine. All of the data is fed into that container and stored in the PSQL database. The usefulness of this data and what exactly it entails is detailed further on.
 
 ## Architecture
 ![Image of Linux Architexture](./assets/architecture.png)
@@ -80,21 +71,15 @@ psql_host port db_name psql_user psql_password &> /tmp/host_usage.log
 
 `queries.sql`
 
-The three queries available in this file answer some relevant business questions 
-regarding resource planning and system management:
-1. The first query lists all monitored hosts by the number of CPUs and memory size. This
-allows analysis of currently available resources.
-2. The second query retrieves the average memory used by each host over a 5-minute interval.
-This is useful and it allows analysis of usage and time patterns. For example, a network admin 
-can see when each machine is most used, and determine when load is highest and lowest for load balancing.
-3. The third query determines how many data points were collected from `host_usage.sh` in every 
-5-minute interval. Since the script is supposed to collect information every minute, if less than 
-3 data points were collected, it can be assumed the host system is failing and requires maintenance. 
+The three queries available in this file answer some relevant business questions regarding resource planning and system management:
+1. The first query lists all monitored hosts by the number of CPUs and memory size. This allows analysis of currently available resources.
+2. The second query retrieves the average memory used by each host over a 5-minute interval. This is useful, and it allows analysis of usage and time patterns. For example, a network admin can see when each machine is most used and determine when the load is highest and lowest for load balancing.
+3. The third query determines how many data points are collected from host_usage.sh in every 5-minute interval. Since the script is supposed to collect information every minute, if less than 3 data points were collected, it can be assumed the host system is failing and requires maintenance.
 
 
 
 ## Database Modeling
-####Schema for 'host_info'
+#### Schema for 'host_info'
 
 Attribute | Type | Description
 --------- | -----| -----------
@@ -108,7 +93,7 @@ cpu_mhz | decimal | CPU clock speed in MHz.
 total_mem | integer | Size of total memory (RAM) in kB
 timestamp | timestamp | The time when this record was collected.
 
-####Schema for 'host_usage'
+#### Schema for 'host_usage'
 
 Attribute | Type | Description
 --------- | -----| -----------
