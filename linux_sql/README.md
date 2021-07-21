@@ -1,3 +1,5 @@
+# Linux Cluster Monitoring Agent
+
 # Introduction
 The goal of this project was to develop a minimum viable product (MVP) that would automatically collect and store hardware information. The data comes from a cluster of internally connected Linux machines. The potential users include the Jarvis Linux Cluster Administration (LCA) team, along with anyone that would need to collect this data, such as network administrators. The project's core is the set of bash scripts that collect the hardware data continuously using the crontab command. A PostgreSQL Docker container stores all of the data; This allows the database system to be portable and fit any Linux machine. The version control system uses Git to manage the development, along with this GitHub repository for storage.
 # Quick Start
