@@ -31,21 +31,70 @@ psql_host port db_name psql_user psql_password &> /tmp/host_usage.log
 ```
 
 # Implementation
-Discuss how you implement the project.
+The basis of this project are the bash scripts. These scripts are located on host machines, and are run
+in order to collect data from that machine. The details of the scripts can be found in the "Scripts" section.
+To help with the collection of this data, a Docker PostgreSQL container is created on one machine. All
+the data is fed into that container and stored into the PSQL database. The usefulness of this data, and what
+exactly it entails is detailed further on.
 
 ## Architecture
 ![Image of Linux Architexture](./assets/architecture.png)
 
 ## Scripts
-Shell script description and usage (use markdown code block for script usage)
-- psql_docker.sh
-- host_info.sh
-- host_usage.sh
-- crontab
-- queries.sql (describe what business problem you are trying to resolve)
+`psql_docker.sh`
+
+This shell script has three commands:
+1. Create a PSQL docker container
+`bash ./scripts/psql_docker.sh create db_user db_password`
+2. Start the existing container 
+`bash ./scripts/psql_docker.sh start` 
+3. Stop the existing container
+`bash ./scripts/psql_docker.sh stop`
+   
+`host_info.sh`
+
+This shell script is responsible for gathering the hardware specifications of the host
+machine and adding it to the PSQL database. The data collected is outlined in the "Database Modeling" section. This script
+must be run after `ddl.sql` and before `host_usage.sh`. Execute the script with:
+
+- `bash ./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password`
+
+`host_usage.sh`
+
+This shell script is responsible for gathering the hardware usage statistics from the host machine.
+The data collected can be seen in the "Database Modeling" section. This script requires `host_info.sh`
+to be run prior. 
+
+`crontab`
+
+Crontab is used to execute `host_usage.sh` every minute in order to constantly collect the 
+hardware usage data. This is done by:
+```
+# Launch the crontab editor
+crontab -e
+
+# Set script to run and log results every minute
+* * * * * bash /full/path/to/linux_sql/scripts/host_usage.sh 
+psql_host port db_name psql_user psql_password &> /tmp/host_usage.log
+```
+
+`queries.sql`
+
+The three queries available in this file answer some relevant business questions 
+regarding resource planning and system management:
+1. The first query lists all monitored hosts by the number of CPUs and memory size. This
+allows analysis of currently available resources.
+2. The second query retrieves the average memory used by each host over a 5-minute interval.
+This is useful and it allows analysis of usage and time patterns. For example, a network admin 
+can see when each machine is most used, and determine when load is highest and lowest for load balancing.
+3. The third query determines how many data points were collected from `host_usage.sh` in every 
+5-minute interval. Since the script is supposed to collect information every minute, if less than 
+3 data points were collected, it can be assumed the host system is failing and requires maintenance. 
+
+
 
 ## Database Modeling
-Schema for 'host_info'
+####Schema for 'host_info'
 
 Attribute | Type | Description
 --------- | -----| -----------
@@ -59,7 +108,7 @@ cpu_mhz | decimal | CPU clock speed in MHz.
 total_mem | integer | Size of total memory (RAM) in kB
 timestamp | timestamp | The time when this record was collected.
 
-Schema for 'host_usage'
+####Schema for 'host_usage'
 
 Attribute | Type | Description
 --------- | -----| -----------
