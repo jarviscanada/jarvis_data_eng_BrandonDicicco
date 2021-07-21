@@ -54,7 +54,9 @@ must be run after `ddl.sql` and before `host_usage.sh`. Execute the script with:
 
 This shell script is responsible for gathering the hardware usage statistics from the host machine.
 The data collected can be seen in the "Database Modeling" section. This script requires `host_info.sh`
-to be run prior. 
+to be run prior. Execute the script with:
+
+- `bash ./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password`
 
 `crontab`
 
@@ -89,7 +91,7 @@ cpu_number | smallint | The number of CPU cores.
 cpu_architecture | varchar | The type of architecture of the processor.
 cpu_model | varchar | Name of CPU model.
 cpu_mhz | decimal | CPU clock speed in MHz.
-2_cache | integer | L2 memory cache size in kB.
+l2_cache | integer | L2 memory cache size in kB.
 total_mem | integer | Size of total memory (RAM) in kB
 timestamp | timestamp | The time when this record was collected.
 
