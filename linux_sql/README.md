@@ -32,8 +32,9 @@ psql_host port db_name psql_user psql_password &> /tmp/host_usage.log
 
 # Implementation
 Discuss how you implement the project.
+
 ## Architecture
-Draw a cluster diagram with three Linux hosts, a DB, and agents (use draw.io website). Image must be saved to the `assets` directory.
+![Image of Linux Architexture](./assets/architecture.png)
 
 ## Scripts
 Shell script description and usage (use markdown code block for script usage)
