@@ -44,6 +44,7 @@ public interface JavaGrep {
   String getRootPath();
 
   void setRootPath(String rootPath);
+
   String getRegex();
 
   void setRegex(String regex);
