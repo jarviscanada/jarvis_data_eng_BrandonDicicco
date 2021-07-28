@@ -40,15 +40,6 @@ case $cmd in
     #Create the container
     docker run --name jrvs-psql -e POSTGRES_PASSWORD="${db_password}" -e POSTGRES_USER="${db_username}" -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
     exit $?
-
-    created=$(docker container ls -a -f name=jrvs-psql | wc -l)
-
-    #If created word count doesn't equal 2, then the container did not get created
-    if [ "$created" -ne "2" ]; then
-      echo "There was an error and the container has not been created."
-      exit 1
-    fi
-
     ;;
 
   #Start the container only if it has been created.
