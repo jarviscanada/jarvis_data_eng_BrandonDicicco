@@ -3,13 +3,10 @@ package ca.jrvs.apps.grep;
 import com.sun.org.slf4j.internal.Logger;
 import com.sun.org.slf4j.internal.LoggerFactory;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.Reader;
 import java.io.Writer;
 import java.io.FileWriter;
 import java.io.IOException;
