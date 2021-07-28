@@ -3,7 +3,11 @@ package ca.jrvs.apps.grep;
 import com.sun.org.slf4j.internal.Logger;
 import com.sun.org.slf4j.internal.LoggerFactory;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.Writer;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +43,7 @@ public class JavaGrepImp implements JavaGrep {
     }
 
   }
+
   @Override
   public void process() throws IOException {
     List<String> matchedLines = new ArrayList<>();
@@ -50,18 +55,22 @@ public class JavaGrepImp implements JavaGrep {
         }
       }
     }
-    
+
     writeToFile(matchedLines);
   }
 
   @Override
   public List<File> listFiles(String rootDir) {
-    return null;
+    List<File> files = new ArrayList<>();
+
+    return files;
   }
 
   @Override
   public List<String> readLines(File inputFile) {
-    return null;
+    List<String> lines = new ArrayList<>();
+
+    return lines;
   }
 
   @Override
@@ -71,7 +80,14 @@ public class JavaGrepImp implements JavaGrep {
 
   @Override
   public void writeToFile(List<String> lines) throws IOException {
+    try (Writer writer = new BufferedWriter(new FileWriter(getOutFile()))) {
 
+      for (String curLine: lines) {
+        writer.write(curLine + System.lineSeparator()); }
+
+    } catch (IOException ex) {
+      logger.error(ex.getMessage(), ex);
+    }
   }
 
   @Override
