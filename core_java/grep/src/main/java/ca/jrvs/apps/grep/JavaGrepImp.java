@@ -5,6 +5,7 @@ import com.sun.org.slf4j.internal.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.BasicConfigurator;
 
@@ -40,7 +41,17 @@ public class JavaGrepImp implements JavaGrep {
   }
   @Override
   public void process() throws IOException {
+    List<String> matchedLines = new ArrayList<>();
 
+    for (File curFile : listFiles(getRootPath())) {
+      for (String curLine : readLines(curFile)) {
+        if (containsPattern(curLine)) {
+          matchedLines.add(curLine);
+        }
+      }
+    }
+    
+    writeToFile(matchedLines);
   }
 
   @Override
@@ -55,7 +66,7 @@ public class JavaGrepImp implements JavaGrep {
 
   @Override
   public boolean containsPattern(String line) {
-    return false;
+    return line.matches(getRegex());
   }
 
   @Override
