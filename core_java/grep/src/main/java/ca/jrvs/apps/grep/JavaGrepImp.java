@@ -63,6 +63,23 @@ public class JavaGrepImp implements JavaGrep {
   public List<File> listFiles(String rootDir) {
     List<File> files = new ArrayList<>();
 
+    File rootDirectory = new File(rootDir);
+    // All files and directories in the given directory
+    File[] allFiles = rootDirectory.listFiles();
+
+    // Go through all files in current directory
+    if (allFiles != null) {
+      for (File curFile : allFiles) {
+        // Add file to list if it is a file
+        if (curFile.isFile()) {
+          files.add(curFile);
+          // If it is a directory, must go through all files/directories in it.
+        } else if (curFile.isDirectory()) {
+          files.addAll(listFiles(curFile.getAbsolutePath()));
+        }
+      }
+    }
+    
     return files;
   }
 
