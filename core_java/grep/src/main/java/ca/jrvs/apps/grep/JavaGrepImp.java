@@ -89,13 +89,13 @@ public class JavaGrepImp implements JavaGrep {
     List<String> lines = new ArrayList<>();
 
     try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
-      String curLine = "";
+      String curLine;
 
       while ((curLine = reader.readLine()) != null) {
         lines.add(curLine);
       }
 
-    } catch (Exception ex) {
+    } catch (IOException ex) {
       logger.error(ex.getMessage(), ex);
     }
 
