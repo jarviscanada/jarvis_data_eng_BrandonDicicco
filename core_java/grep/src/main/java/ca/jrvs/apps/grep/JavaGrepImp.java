@@ -4,8 +4,12 @@ import com.sun.org.slf4j.internal.Logger;
 import com.sun.org.slf4j.internal.LoggerFactory;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
 import java.io.Writer;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -79,13 +83,24 @@ public class JavaGrepImp implements JavaGrep {
         }
       }
     }
-    
+
     return files;
   }
 
   @Override
   public List<String> readLines(File inputFile) {
     List<String> lines = new ArrayList<>();
+
+    try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
+      String curLine = "";
+
+      while ((curLine = reader.readLine()) != null) {
+        lines.add(curLine);
+      }
+
+    } catch (Exception ex) {
+      logger.error(ex.getMessage(), ex);
+    }
 
     return lines;
   }
