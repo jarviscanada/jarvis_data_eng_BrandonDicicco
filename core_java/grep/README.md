@@ -21,7 +21,7 @@ docker pull bdicicco/grep
 docker run --rm -v `pwd`/data:/data -v `pwd`/log:/log bdicicco/grep .*Romeo.*Juliet.* /data /log/grep.out
 ```
 
-#Implementation
+# Implementation
 The application was implemented in two ways: using loops and using streams. The core algorithm for both
 implementations is the same, and is detailed below.
 ## Pseudocode
