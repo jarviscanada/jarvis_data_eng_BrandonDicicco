@@ -22,8 +22,14 @@ public class JDBCExecutor {
     try {
       Connection connection = dcm.getConnection();
       CustomerDAO customerDAO = new CustomerDAO(connection);
-      Customer customer = customerDAO.findById(1000);
-      executor.logger.debug(customer.getFirstName() + " " + customer.getLastName());
+
+      Customer customer = customerDAO.findById(10000);
+      executor.logger.debug(customer.getFirstName() + " " + customer.getLastName() + " " + customer.getEmail());
+
+      customer.setEmail("gwashington@wh.gov");
+      customer = customerDAO.update(customer);
+      executor.logger.debug(customer.getFirstName() + " " + customer.getLastName() + " " + customer.getEmail());
+
     } catch (SQLException ex) {
         executor.logger.error("Error when creating connection and executing SQL statement", ex);
     }
