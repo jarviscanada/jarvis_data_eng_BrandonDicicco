@@ -39,7 +39,7 @@ public class JavaGrepImp implements JavaGrep {
     try {
       javaGrepImp.process();
     } catch (Exception ex) {
-      javaGrepImp.logger.error(ex.getMessage(), ex);
+      javaGrepImp.logger.error("Error when conducting the process flow", ex);
     }
 
   }
@@ -95,7 +95,7 @@ public class JavaGrepImp implements JavaGrep {
       }
 
     } catch (IOException ex) {
-      logger.error(ex.getMessage(), ex);
+      logger.error("Error when reading lines from the file", ex);
     }
 
     return lines;
@@ -114,7 +114,7 @@ public class JavaGrepImp implements JavaGrep {
         writer.write(curLine + System.lineSeparator()); }
 
     } catch (IOException ex) {
-      logger.error(ex.getMessage(), ex);
+      logger.error("Error when writing lines to output file", ex);
     }
   }
 

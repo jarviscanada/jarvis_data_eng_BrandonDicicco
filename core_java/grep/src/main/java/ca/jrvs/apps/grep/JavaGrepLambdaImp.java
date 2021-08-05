@@ -24,7 +24,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
     try {
       javaGrepLambdaImp.process();
     } catch (Exception ex) {
-      javaGrepLambdaImp.logger.error(ex.getMessage(), ex);
+      javaGrepLambdaImp.logger.error("Error when conducting process flow", ex);
     }
   }
 
@@ -36,7 +36,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
       lines = Files.lines(inputFile.toPath())
           .collect(Collectors.toList());
     } catch (IOException ex) {
-      logger.error(ex.getMessage(), ex);
+      logger.error("Error when reading lines from file", ex);
     }
 
     return lines;
@@ -54,7 +54,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp {
           .map(Path::toFile)
           .collect(Collectors.toList());
     } catch (IOException ex) {
-      logger.error(ex.getMessage(), ex);
+      logger.error("Error when traversing the files list", ex);
     }
 
     return files;
