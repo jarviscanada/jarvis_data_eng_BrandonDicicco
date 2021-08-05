@@ -3,6 +3,7 @@ package ca.jrvs.apps.jdbc;
 import ca.jrvs.apps.jdbc.util.DataAccessObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import org.apache.log4j.BasicConfigurator;
@@ -10,21 +11,45 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CustomerDAO extends DataAccessObject<Customer> {
-  final Logger logger = LoggerFactory.getLogger(CustomerDAO.class);
+  final Logger logger = LoggerFactory.getLogger(JDBCExecutor.class);
 
   private static final String INSERT = "INSERT INTO customer "
       + "(first_name, last_name, email, phone, address, city, state, zipcode) "
       + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
+  private static final String GET_ONE ="SELECT customer_id, first_name, last_name, email, phone, address, city, state, zipcode "
+      + "FROM customer where customer_id = ?";
 
   public CustomerDAO(Connection connection) {
     super(connection);
-    BasicConfigurator.configure();
   }
 
   @Override
   public Customer findById(long id) {
-    return null;
+    Customer customer = new Customer();
+
+    try (PreparedStatement statement = this.connection.prepareStatement(GET_ONE);) {
+      statement.setLong(1, id);
+      ResultSet resultSet = statement.executeQuery();
+
+      while (resultSet.next()) {
+        customer.setId(resultSet.getLong("customer_id"));
+        customer.setFirstName(resultSet.getString("first_name"));
+        customer.setLastName(resultSet.getString("last_name"));
+        customer.setEmail(resultSet.getString("email"));
+        customer.setPhone(resultSet.getString("phone"));
+        customer.setAddress(resultSet.getString("address"));
+        customer.setCity(resultSet.getString("city"));
+        customer.setState(resultSet.getString("state"));
+        customer.setZipCode(resultSet.getString("zipcode"));
+      }
+
+    } catch (SQLException ex) {
+      logger.debug("Error when finding customer", ex);
+      throw new RuntimeException(ex);
+    }
+
+    return customer;
   }
 
   @Override
@@ -50,7 +75,9 @@ public class CustomerDAO extends DataAccessObject<Customer> {
       statement.setString(8, dto.getZipCode());
 
       statement.execute();
-      return null;
+
+      int id = this.getLastVal(CUSTOMER_SEQUENCE);
+      return this.findById(id);
 
     } catch (SQLException ex) {
         logger.debug("Error when creating customer", ex);
