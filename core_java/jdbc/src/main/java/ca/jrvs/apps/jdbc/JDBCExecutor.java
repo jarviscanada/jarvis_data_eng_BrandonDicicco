@@ -21,14 +21,11 @@ public class JDBCExecutor {
 
     try {
       Connection connection = dcm.getConnection();
-      CustomerDAO customerDAO = new CustomerDAO(connection);
+      OrderDAO orderDAO = new OrderDAO(connection);
 
-      Customer customer = customerDAO.findById(10000);
-      executor.logger.debug(customer.getFirstName() + " " + customer.getLastName() + " " + customer.getEmail());
+      Order order = orderDAO.findById(1000);
+      executor.logger.debug(order.toString());
 
-      customer.setEmail("gwashington@wh.gov");
-      customer = customerDAO.update(customer);
-      executor.logger.debug(customer.getFirstName() + " " + customer.getLastName() + " " + customer.getEmail());
 
     } catch (SQLException ex) {
         executor.logger.error("Error when creating connection and executing SQL statement", ex);
