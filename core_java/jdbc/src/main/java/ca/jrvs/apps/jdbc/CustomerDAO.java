@@ -51,7 +51,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
 
     } catch (SQLException ex) {
       logger.debug("Error when finding customer", ex);
-      throw new RuntimeException(ex);
+      throw new RuntimeException();
     }
 
     return customer;
@@ -95,12 +95,12 @@ public class CustomerDAO extends DataAccessObject<Customer> {
           this.connection.rollback();
 
         } catch (SQLException sqle) {
-          logger.debug("Error in update. Rolling back.", ex);
-          throw new RuntimeException(sqle);
+          logger.debug("Error in update. Rolling back.", sqle);
+          throw new RuntimeException();
         }
 
         logger.debug("Error when updating customer", ex);
-        throw new RuntimeException(ex);
+        throw new RuntimeException();
     }
 
     return customer;
@@ -125,7 +125,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
 
     } catch (SQLException ex) {
         logger.debug("Error when creating customer", ex);
-        throw new RuntimeException(ex);
+        throw new RuntimeException();
     }
   }
 
@@ -137,7 +137,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
 
     } catch (SQLException ex) {
         logger.debug("Error when deleting customer", ex);
-        throw new RuntimeException(ex);
+        throw new RuntimeException();
     }
   }
 

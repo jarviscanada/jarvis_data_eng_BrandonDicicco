@@ -75,7 +75,7 @@ public class OrderDAO extends DataAccessObject<Order> {
 
     } catch (SQLException ex) {
       logger.debug("Error when finding the order", ex);
-      throw new RuntimeException(ex);
+      throw new RuntimeException();
     }
 
     return order;
