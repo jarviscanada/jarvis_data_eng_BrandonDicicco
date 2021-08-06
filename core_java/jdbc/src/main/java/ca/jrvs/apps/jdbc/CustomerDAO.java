@@ -66,6 +66,14 @@ public class CustomerDAO extends DataAccessObject<Customer> {
   public Customer update(Customer dto) {
     Customer customer = null;
 
+    try {
+      this.connection.setAutoCommit(false);
+
+    } catch (SQLException ex) {
+      logger.debug("Error when turning off auto commit", ex);
+      throw new RuntimeException(ex);
+    }
+
     try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);) {
       statement.setString(1, dto.getFirstName());
       statement.setString(2, dto.getLastName());
@@ -78,9 +86,19 @@ public class CustomerDAO extends DataAccessObject<Customer> {
       statement.setLong(9, dto.getId());
 
       statement.execute();
+      this.connection.commit();
 
       customer = this.findById(dto.getId());
     } catch (SQLException ex) {
+
+        try {
+          this.connection.rollback();
+
+        } catch (SQLException sqle) {
+          logger.debug("Error in update. Rolling back.", ex);
+          throw new RuntimeException(sqle);
+        }
+
         logger.debug("Error when updating customer", ex);
         throw new RuntimeException(ex);
     }
