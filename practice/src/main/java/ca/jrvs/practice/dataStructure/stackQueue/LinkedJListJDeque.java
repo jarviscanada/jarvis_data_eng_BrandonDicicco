@@ -89,10 +89,18 @@ public class LinkedJListJDeque<E> implements JDeque<E>{
    */
   @Override
   public E peek() {
+    if (linkedList.isEmpty()) {
+      return null;
+    }
+
     return linkedList.get(0);
   }
 
   public E peekLast() {
+    if (linkedList.isEmpty()) {
+      return null;
+    }
+
     return linkedList.get(linkedList.size() - 1);
   }
 }
