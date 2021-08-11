@@ -5,7 +5,7 @@ github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_BrandonDic
 
 # Introduce yourself, your academic and professional background.
 # What excites you about the software industry and your passion. At least 80 words
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis a orci ac malesuada. Vivamus ligula elit, viverra eu ante porttitor, blandit convallis augue. Aliquam justo justo, mollis at lacus eu, rutrum finibus est. Vestibulum venenatis purus id accumsan pretium. In efficitur magna nec enim laoreet tincidunt. Ut libero metus, scelerisque nec eros vitae, sagittis pellentesque enim. Donec dictum felis volutpat, vehicula magna eu, imperdiet elit. Phasellus ut velit a massa efficitur faucibus. Sed volutpat, lacus sed sagittis luctus, elit.
+summary: "I graduated with a Bachelor's of Engineering Science in Software Engineering from Western University. Currently, I am employed as a Data Engineer at Jarvis Consulting where I learn industry-trending and standard technologies, and implement applications with real-world purpose. I'm able to apply technical knowledge daily in various domains such as Java, SQL, Linux, and more. Throughout my schooling, I learned and used various languages and frameworks such as Java, C#, web technologies, RDBMS, and Git. I've developed full-stack web applications with REST APIs along with desktop applications. Throughout my schooling and career history, I've worked in many fast-paced highly collaborative teams that required me to always be learning and be responsible. I currently have a passion for the insights data can provide, and I am interested in applying creative solutions to real-world problems."
 
 # Group your skills by level.
 # Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
@@ -73,10 +73,10 @@ highlighted_projects:
   - name: "Self Start Body Smart - Online Physiotherapy Service"
     #URL is optional
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.
+    description: "Developed in an Agile team a full-stack online physiotherapy application for a client. Created various documentation such as UML class diagrams, sequence diagrams, and the software requirements specification (SRS). Communicated regularly with project supervisors and client to implement continuous feedback and requirement changes. Developed the application using the MEEN stack (MongoDB, Express, Ember, Node.js). Helped in the creation of a REST API for server-side routing. Personal focus on dynamic forms and questions, graphs, video APIs, payment APIs, and more. Received a prize for being selected as a top 3 group."
   - name: "Aipen - Automated Machine Learning Framework"
     git_url: "https://github.com/bcdicicco/Aipen"
-    description: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.
+    description: "Developed in an Agile team an evolutionary engine automated machine learning framework with the target audience of machine learning researchers. Created various document such as project proposal, requirements, design document, and user manual. The project used Python with Flask for the backend and JavaScript/HTML/CSS for the frontend. Personal focus on the frontend to retrieve and display data from the AutoML instance. Created backend data routing."
 
 #List of professional experience
 #The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
@@ -91,7 +91,7 @@ professional_experience:
   - title: "Esports Event Organizer and Community Manager"
     company: "Self-employed"
     duration: "2016-2021"
-    description: "Organized gaming tournaments and events independently and as an executive of the Western Electronic Gaming Association. Coordinated hundreds of weekly and monthly events on the scale of 15-90 attendees. Increased average attendance by 50-100% depending on the event type. Communicated with venue hosts to negotiate a suitable location. Participated with various other organizers across the province for improvements, marketing, and relations. Constantly communicated and marketed to local communities. Organized, processed, and analyzed event data to create rankings and statistics. "
+    description: "Organized gaming tournaments and events independently and as an executive team member of the Western Electronic Gaming Association. Coordinated hundreds of weekly and monthly events on the scale of 15-90 attendees. Increased average attendance by 50-100% depending on the event type. Communicated with venue hosts to negotiate a suitable location. Participated with various other organizers across the province for improvements, marketing, and relations. Constantly communicated and marketed to local communities. Organized, processed, and analyzed event data to create rankings and statistics. "
   - title: "Cook"
     company: "Muldoon's Pizza"
     duration: "2017-2021"
