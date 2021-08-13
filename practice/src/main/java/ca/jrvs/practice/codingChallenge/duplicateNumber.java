@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Ticket: https://www.notion.so/jarvisdev/Find-the-Duplicate-Number-824807b605d24fdb9e12f9c72beead92
+ */
 public class duplicateNumber {
 
   /**
