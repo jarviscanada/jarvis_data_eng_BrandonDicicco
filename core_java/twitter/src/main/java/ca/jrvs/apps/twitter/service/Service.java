@@ -9,7 +9,7 @@ public interface Service {
    *
    * @throws IllegalArgumentException if text exceed max number of allowed characters or lat/long out of range
    */
-  Tweet postTweet(Tweet tweet);
+  //Tweet postTweet(Tweet tweet);
 
 
   /**
@@ -21,7 +21,7 @@ public interface Service {
    *
    * @throws IllegalArgumentException if id or fields param is invalid
    */
-  Tweet showTweet(String id, String[] fields);
+  //Tweet showTweet(String id, String[] fields);
 
   /**
    * Delete Tweet(s) by id(s).
@@ -31,5 +31,5 @@ public interface Service {
    *
    * @throws IllegalArgumentException if one of the IDs is invalid.
    */
-  List<Tweet> deleteTweets(String[] ids);
+  //List<Tweet> deleteTweets(String[] ids);
 }
