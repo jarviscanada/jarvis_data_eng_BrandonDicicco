@@ -67,7 +67,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
    * @param expectedStatusCode expected status of the HTTP response
    * @return tweet object parsed from response
    */
-  private Tweet createTweetObject(HttpResponse response, Integer expectedStatusCode) {
+  public Tweet createTweetObject(HttpResponse response, Integer expectedStatusCode) {
     Tweet tweet = null;
 
     int actualStatus = response.getStatusLine().getStatusCode();
