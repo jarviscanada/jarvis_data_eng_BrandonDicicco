@@ -11,22 +11,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.springframework.http.HttpMethod;
 
 public class TwitterHttpHelper implements HttpHelper {
 
-  public static void main(String[] args) throws Exception {
-    String consumerKey = System.getenv("consumerKey");
-    String consumerSecret = System.getenv("consumerSecret");
-    String accessToken = System.getenv("accessToken");
-    String tokenSecret = System.getenv("tokenSecret");
-
-    TwitterHttpHelper twitterHttpHelper =  new TwitterHttpHelper(consumerKey, consumerSecret, accessToken, tokenSecret);
-    URI getRequest = new URI("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=BrandonDiCicco1");
-    HttpResponse response = twitterHttpHelper.httpGet(getRequest);
-    System.out.println(EntityUtils.toString(response.getEntity()));
-  }
   // Dependencies
   private OAuthConsumer consumer;
   private HttpClient httpClient;
