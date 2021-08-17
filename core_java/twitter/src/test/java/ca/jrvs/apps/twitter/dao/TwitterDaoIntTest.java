@@ -26,7 +26,7 @@ public class TwitterDaoIntTest {
   @Test
   public void create() throws Exception {
     String hashtag = "#Test";
-    String text = "@BrandonDiCicco1 hello this is a test tweet2 " + hashtag;
+    String text = "@BrandonDiCicco1 hello this is a test tweet2 " + hashtag + " " + System.currentTimeMillis();
     Float lon = -1f;
     Float lat = 1f;
 
