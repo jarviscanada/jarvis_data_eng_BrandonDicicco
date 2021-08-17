@@ -19,7 +19,7 @@ public class TwitterDao implements CrdDao<Tweet, String> {
   // URI constants
   private static final String API_BASE_URI = "https://api.twitter.com";
   private static final String POST_PATH = "/1.1/statuses/update.json";
-  private static final String SHOW_PATH = "/1/statuses/show.json";
+  private static final String SHOW_PATH = "/1.1/statuses/show.json";
   private static final String DELETE_PATH = "/1.1/statuses/destroy/";
 
   // URI symbols

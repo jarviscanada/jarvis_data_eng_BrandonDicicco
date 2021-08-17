@@ -1,9 +1,19 @@
 package ca.jrvs.apps.twitter.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+    "id",
+    "id_str",
+    "indices",
+    "name",
+    "screen_name"
+})
 public class UserMention {
-  private Integer id;
+  private Long id;
   @JsonProperty("id_str")
   private String idStr;
   private Integer[] indices;
@@ -11,11 +21,11 @@ public class UserMention {
   @JsonProperty("screen_name")
   private String screenName;
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
