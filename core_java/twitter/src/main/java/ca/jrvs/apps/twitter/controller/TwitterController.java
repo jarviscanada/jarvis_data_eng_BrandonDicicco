@@ -27,24 +27,24 @@ public class TwitterController implements Controller {
   public Tweet postTweet(String[] args) {
     // Check if correct amount of arguments was given
     if (args.length != 3)
-      throw new IllegalArgumentException("USAGE: TwitterCLIApp post \"tweet_text\" \"latitude:longitude\"");
+      throw new IllegalArgumentException("USAGE: TwitterCLIApp post \"tweet_text\" \"longitude:latitude\"");
 
     String tweetText = args[1];
     String[] coordinates = args[2].split(COORD_SEP);
 
     if (coordinates.length != 2 || StringUtils.isEmpty(tweetText)) {
       throw new IllegalArgumentException(
-          "Tweet text must be provided, along with valid location format. \n USAGE: TwitterCLIApp post \"tweet_text\" \"latitude:longitude\"");
+          "Tweet text must be provided, along with valid location format. \n USAGE: TwitterCLIApp post \"tweet_text\" \"longitude:latitude\"");
     }
 
     Float longitude = null, latitude = null;
 
     try {
-      latitude = Float.parseFloat(coordinates[0]);
-      longitude = Float.parseFloat(coordinates[1]);
+      longitude = Float.parseFloat(coordinates[0]);
+      latitude = Float.parseFloat(coordinates[1]);
 
     } catch (Exception ex) {
-      throw new IllegalArgumentException("Location format incorrect. \n USAGE: TwitterCLIApp post \"tweet_text\" \"latitude:longitude\"");
+      throw new IllegalArgumentException("Location format incorrect. \n USAGE: TwitterCLIApp post \"tweet_text\" \"longitude:latitude\"");
     }
 
     Tweet newTweet = TweetUtil.createTweet(tweetText, longitude, latitude);
