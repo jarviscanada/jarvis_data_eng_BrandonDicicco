@@ -22,7 +22,7 @@ public class TwitterHttpHelperTest {
 
   @Test
   public void httpPost() throws Exception {
-    URI postRequest = new URI("https://api.twitter.com/1.1/statuses/update.json?status=POST_Request_Test2");
+    URI postRequest = new URI("https://api.twitter.com/1.1/statuses/update.json?status=POST_Request_Test10");
     HttpResponse response = twitterHttpHelper.httpPost(postRequest);
     assertEquals(200, response.getStatusLine().getStatusCode());
   }

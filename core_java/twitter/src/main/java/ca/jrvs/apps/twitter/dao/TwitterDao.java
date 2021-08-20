@@ -7,7 +7,6 @@ import com.google.gdata.util.common.base.PercentEscaper;
 import java.io.IOException;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.BasicConfigurator;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.slf4j.Logger;
@@ -39,7 +38,6 @@ public class TwitterDao implements CrdDao<Tweet, String> {
 
   @Autowired
   public TwitterDao(HttpHelper httpHelper) {
-    BasicConfigurator.configure();
     this.httpHelper = httpHelper;
   }
 

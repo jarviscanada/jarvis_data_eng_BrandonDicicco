@@ -46,7 +46,7 @@ public class TwitterDaoUnitTest {
   @Test
   public void postTweet() throws Exception {
     String hashtag = "#Test";
-    String text = "@BrandonDiCicco1 Find Tweet Test " + hashtag;
+    String text = "@BrandonDiCicco1 Find Tweet Test " + hashtag +  System.currentTimeMillis();
     Float lon = -1f;
     Float lat = 1f;
     Tweet postTweet = new Tweet();
@@ -82,7 +82,7 @@ public class TwitterDaoUnitTest {
   @Test
   public void deleteTweet() throws Exception {
     // Test failure case
-    when (mockHelper.httpPost(isNotNull())).thenThrow(new RuntimeException("Mock"));
+    // when (mockHelper.httpPost(isNotNull())).thenThrow(new RuntimeException("Mock"));
     try {
       dao.deleteById("");
       fail();
@@ -92,7 +92,7 @@ public class TwitterDaoUnitTest {
     }
 
     // Test successful case
-    when (mockHelper.httpPost(isNotNull())).thenReturn(null);
+    // when (mockHelper.httpPost(isNotNull())).thenReturn(null);
     TwitterDao spyDao = Mockito.spy(dao);
     Tweet expectedTweet = JsonParser.toObjectFromJson(tweetJsonStr, Tweet.class);
 
@@ -117,7 +117,7 @@ public class TwitterDaoUnitTest {
     }
 
     // Test successful case
-    when (mockHelper.httpGet(isNotNull())).thenReturn(null);
+    // when (mockHelper.httpGet(isNotNull())).thenReturn(null);
     TwitterDao spyDao = Mockito.spy(dao);
     Tweet expectedTweet = JsonParser.toObjectFromJson(tweetJsonStr, Tweet.class);
 

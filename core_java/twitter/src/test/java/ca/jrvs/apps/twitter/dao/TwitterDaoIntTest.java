@@ -52,7 +52,7 @@ public class TwitterDaoIntTest {
   @Test
   public void findById() {
     String hashtag = "#Test";
-    String text = "@BrandonDiCicco1 Find Tweet Test " + hashtag;
+    String text = "@BrandonDiCicco1 Find Tweet Test " + hashtag + " " + System.currentTimeMillis();
     Float lon = -1f;
     Float lat = 1f;
 
@@ -79,7 +79,7 @@ public class TwitterDaoIntTest {
   @Test
   public void deleteById() {
     String hashtag = "#Test";
-    String text = "@BrandonDiCicco1 Delete Tweet Test " + hashtag;
+    String text = "@BrandonDiCicco1 Find Tweet Test " + hashtag + " " + System.currentTimeMillis();
     Float lon = -1f;
     Float lat = 1f;
 
