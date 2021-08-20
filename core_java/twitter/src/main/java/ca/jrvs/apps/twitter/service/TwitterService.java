@@ -62,24 +62,52 @@ public class TwitterService implements Service {
 
     // Find wanted tweet.
     Tweet getTweet = (Tweet) dao.findById(id);
-    Tweet tweetWithNulls = new Tweet();
 
-    // Set only fields that aren't null on the tweet to be returned
-    for (String field : fields) {
-      if (field.equals("created_at")) tweetWithNulls.setCreatedAt(getTweet.getCreatedAt());
-      else if (field.equals("id")) tweetWithNulls.setId(getTweet.getId());
-      else if (field.equals("id_str")) tweetWithNulls.setIdStr(getTweet.getIdStr());
-      else if (field.equals("text")) tweetWithNulls.setText(getTweet.getText());
-      else if (field.equals("entities")) tweetWithNulls.setEntities(getTweet.getEntities());
-      else if (field.equals("coordinates")) tweetWithNulls.setCoordinates(getTweet.getCoordinates());
-      else if (field.equals("retweet_count")) tweetWithNulls.setRetweetCount(getTweet.getRetweetCount());
-      else if (field.equals("favorite_count")) tweetWithNulls.setFavoriteCount(getTweet.getFavoriteCount());
-      else if (field.equals("favorited")) tweetWithNulls.setFavorited(getTweet.isFavorited());
-      else if (field.equals("retweeted")) tweetWithNulls.setRetweeted(getTweet.isRetweeted());
-      else throw new IllegalArgumentException("Invalid field given: " + field);
+    if (fields != null) {
+      Tweet tweetWithNulls = new Tweet();
+
+      // Set only fields that aren't null on the tweet to be returned
+      for (String field : fields) {
+        switch (field) {
+          case "created_at":
+            tweetWithNulls.setCreatedAt(getTweet.getCreatedAt());
+            break;
+          case "id":
+            tweetWithNulls.setId(getTweet.getId());
+            break;
+          case "id_str":
+            tweetWithNulls.setIdStr(getTweet.getIdStr());
+            break;
+          case "text":
+            tweetWithNulls.setText(getTweet.getText());
+            break;
+          case "entities":
+            tweetWithNulls.setEntities(getTweet.getEntities());
+            break;
+          case "coordinates":
+            tweetWithNulls.setCoordinates(getTweet.getCoordinates());
+            break;
+          case "retweet_count":
+            tweetWithNulls.setRetweetCount(getTweet.getRetweetCount());
+            break;
+          case "favorite_count":
+            tweetWithNulls.setFavoriteCount(getTweet.getFavoriteCount());
+            break;
+          case "favorited":
+            tweetWithNulls.setFavorited(getTweet.isFavorited());
+            break;
+          case "retweeted":
+            tweetWithNulls.setRetweeted(getTweet.isRetweeted());
+            break;
+          default:
+            throw new IllegalArgumentException("Invalid field given: " + field);
+        }
+      }
+
+      return tweetWithNulls;
     }
 
-    return tweetWithNulls;
+    return getTweet;
   }
 
   /**
