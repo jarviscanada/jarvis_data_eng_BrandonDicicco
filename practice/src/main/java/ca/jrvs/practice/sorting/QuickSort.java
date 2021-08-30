@@ -1,7 +1,5 @@
 package ca.jrvs.practice.sorting;
 
-import com.sun.xml.internal.bind.v2.model.annotation.Quick;
-
 public class QuickSort {
 
   public void quickSort(int[] arr, int begin, int end) {
