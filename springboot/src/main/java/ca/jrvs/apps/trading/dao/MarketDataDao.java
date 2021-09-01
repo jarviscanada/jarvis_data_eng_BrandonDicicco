@@ -16,6 +16,7 @@ import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,17 +81,18 @@ public class MarketDataDao implements CrudRepository<IexQuote, String> {
     List<IexQuote> quotes = new ArrayList<>();
 
     for (String ticker : tickers) {
-      if (IexQuotesJson.getJSONObject(ticker).getJSONObject("quote").toString().equals("null")) {
-        throw new IllegalArgumentException("Given ticker is invalid - " + ticker);
-      }
+      if (IexQuotesJson.has(ticker)) {
+        try {
+          String quote = IexQuotesJson.getJSONObject(ticker).getJSONObject("quote").toString();
+          IexQuote quoteObj = JsonParser.toObjectFromJson(quote, IexQuote.class);
+          quotes.add(quoteObj);
 
-      try {
-        String quote = IexQuotesJson.getJSONObject(ticker).getJSONObject("quote").toString();
-        IexQuote quoteObj = JsonParser.toObjectFromJson(quote, IexQuote.class);
-        quotes.add(quoteObj);
+        } catch (IOException ex) {
+          logger.error("Unable to deserialize JSON", ex);
+        }
 
-      } catch (IOException ex) {
-        logger.error("Unable to deserialize JSON", ex);
+      } else {
+        throw new IllegalArgumentException("Invalid ticker");
       }
     }
 
