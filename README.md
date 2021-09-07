@@ -19,6 +19,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_BrandonDic
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_BrandonDicicco/tree/master/core_java)]:
       
+  - Twitter App: Created a Java application that uses Twitter's REST API to allow for the posting, showing, and deletion of tweets. Implemented CRD operations on a Tweet object using the DAO pattern. Structured the entire project using the MVC pattern. Built and compiled with Maven, deployed on Docker Hub, and managed with Spring Boot.
   - JDBC App: Developed an application that utilizes the JDBC API to connect between Java code and a PostgreSQL database instance deployed using Docker. Implemented CRUD operations for various data access objects (DAOs) that work on pre-defined SQL queries.
   - Grep App: Created a Java application that recreates a simplified version of the Linux grep command. The program recursively searches through a directory to find all user-specified Regex matches and outputs to a file. Utilized lambda functions and streams in order to reduce memory usage and optimize performance. Built and compiled using Maven, along with being deployed on Docker Hub.
 
@@ -31,7 +32,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_BrandonDic
 
 ## Professional Experiences
 
-**Software Developer, Jarvis (2021-present)**: Collaborated with a Data Engineering team in an Agile/Scrum environment. Worked on various projects involving Java and Linux/Bash. Used various technologies such as Docker, PostgreSQL, Maven, Git, and IntelliJ to develop data technologies projects. Participated in daily scrum meetings along with sprint retrospective meetings. Utilized correct GitFlow procedures to achieve coordinated development. Researched new technologies and practices to develop solutions to real-world problems.
+**Software Developer, Jarvis (2021-present)**: Collaborated with a Data Engineering team in an Agile/Scrum environment. Worked on various projects involving Java and Linux/Bash. Used various technologies such as Docker, PostgreSQL, Postman, Maven, Git, Spring Boot, and IntelliJ to develop data technologies projects. Participated in daily scrum meetings along with sprint retrospective meetings. Led daily scrums as the team lead. Utilized correct GitFlow procedures to achieve coordinated development. Researched new technologies and practices to develop solutions to real-world problems.
 
 **Esports Event Organizer and Community Manager, Self-employed (2016-2021)**: Organized gaming tournaments and events independently and as an executive team member of the Western Electronic Gaming Association. Coordinated hundreds of weekly and monthly events on a scale of 15-90 attendees. Increased average attendance by 50-100% depending on the event type. Communicated with venue hosts to negotiate a suitable location. Participated with various other organizers across the province for improvements, marketing, and relations. Constantly communicated and marketed to local communities. Organized, processed, and analyzed event data to create rankings and statistics. 
 
