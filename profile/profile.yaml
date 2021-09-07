@@ -46,7 +46,7 @@ jarvis_projects:
   - name: "Core Java Apps"
     git_url: "/core_java"
     description:
-#      - "Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+      - "Twitter App: Created a Java application that uses Twitter's REST API to allow for the posting, showing, and deletion of tweets. Implemented CRD operations on a Tweet object using the DAO pattern. Structured the entire project using the MVC pattern. Built and compiled with Maven, deployed on Docker Hub, and managed with Spring Boot."
       - "JDBC App: Developed an application that utilizes the JDBC API to connect between Java code and a PostgreSQL database instance deployed using Docker. Implemented CRUD operations for various data access objects (DAOs) that work on pre-defined SQL queries."
       - "Grep App: Created a Java application that recreates a simplified version of the Linux grep command. The program recursively searches through a directory to find all user-specified Regex matches and outputs to a file. Utilized lambda functions and streams in order to reduce memory usage and optimize performance. Built and compiled using Maven, along with being deployed on Docker Hub."
 #  - name: "Springboot App"
@@ -86,7 +86,7 @@ professional_experience:
     company: "Jarvis"
     duration: "2021-present"
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: "Collaborated with a Data Engineering team in an Agile/Scrum environment. Worked on various projects involving Java and Linux/Bash. Used various technologies such as Docker, PostgreSQL, Maven, Git, and IntelliJ to develop data technologies projects. Participated in daily scrum meetings along with sprint retrospective meetings. Utilized correct GitFlow procedures to achieve coordinated development. Researched new technologies and practices to develop solutions to real-world problems."
+    description: "Collaborated with a Data Engineering team in an Agile/Scrum environment. Worked on various projects involving Java and Linux/Bash. Used various technologies such as Docker, PostgreSQL, Postman, Maven, Git, Spring Boot, and IntelliJ to develop data technologies projects. Participated in daily scrum meetings along with sprint retrospective meetings. Led daily scrums as the team lead. Utilized correct GitFlow procedures to achieve coordinated development. Researched new technologies and practices to develop solutions to real-world problems."
   - title: "Esports Event Organizer and Community Manager"
     company: "Self-employed"
     duration: "2016-2021"
