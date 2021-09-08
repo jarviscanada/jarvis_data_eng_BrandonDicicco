@@ -71,4 +71,12 @@ public class Quote implements Entity<String>{
         ", askSize=" + askSize +
         '}';
   }
+
+  public String getTicker() {
+    return ticker;
+  }
+
+  public void setTicker(String ticker) {
+    this.ticker = ticker;
+  }
 }
