@@ -11,15 +11,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.stereotype.Component;
 
+@Component
 @SpringBootApplication(exclude = {JdbcTemplateAutoConfiguration.class, DataSourceAutoConfiguration.class,
     HibernateJpaAutoConfiguration.class})
 public class Application implements CommandLineRunner {
 
   private Logger logger = LoggerFactory.getLogger(Application.class);
 
-  @Value("${app.init.dailyList")
-  private String[] initDailyList;
+  //@Value("${app.init.dailyList")
+  //private String[] initDailyList;
 
 
   private QuoteService quoteService;

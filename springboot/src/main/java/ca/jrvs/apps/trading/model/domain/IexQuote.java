@@ -155,11 +155,11 @@ public class IexQuote {
   @JsonProperty("iexBidPrice")
   private Double iexBidPrice;
   @JsonProperty("iexBidSize")
-  private Long iexBidSize;
+  private Integer iexBidSize;
   @JsonProperty("iexAskPrice")
-  private Long iexAskPrice;
+  private Double iexAskPrice;
   @JsonProperty("iexAskSize")
-  private Long iexAskSize;
+  private Integer iexAskSize;
   @JsonProperty("iexOpen")
   private Double iexOpen;
   @JsonProperty("iexOpenTime")
@@ -598,32 +598,32 @@ public class IexQuote {
   }
 
   @JsonProperty("iexBidSize")
-  public Long getIexBidSize() {
+  public Integer getIexBidSize() {
     return iexBidSize;
   }
 
   @JsonProperty("iexBidSize")
-  public void setIexBidSize(Long iexBidSize) {
+  public void setIexBidSize(Integer iexBidSize) {
     this.iexBidSize = iexBidSize;
   }
 
   @JsonProperty("iexAskPrice")
-  public Long getIexAskPrice() {
+  public Double getIexAskPrice() {
     return iexAskPrice;
   }
 
   @JsonProperty("iexAskPrice")
-  public void setIexAskPrice(Long iexAskPrice) {
+  public void setIexAskPrice(Double iexAskPrice) {
     this.iexAskPrice = iexAskPrice;
   }
 
   @JsonProperty("iexAskSize")
-  public Long getIexAskSize() {
+  public Integer getIexAskSize() {
     return iexAskSize;
   }
 
   @JsonProperty("iexAskSize")
-  public void setIexAskSize(Long iexAskSize) {
+  public void setIexAskSize(Integer iexAskSize) {
     this.iexAskSize = iexAskSize;
   }
 
