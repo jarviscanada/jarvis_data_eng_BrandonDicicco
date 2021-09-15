@@ -66,7 +66,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
   @Override
   public Optional<T> findById(Integer id) {
     Optional<T> entity = Optional.empty();
-    String selectSql = "SELECT * FROM" + getTableName() + " WHERE " + getIdColumnName() + " =?";
+    String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + " =?";
 
     try {
       entity = Optional.ofNullable((T) getJdbcTemplate().queryForObject(selectSql,
